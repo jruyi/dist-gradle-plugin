@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<bootstrap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.jruyi.org/schema/jruyi/bootstrap/1.0"
+	xsi:schemaLocation="http://www.jruyi.org/schema/jruyi/bootstrap/1.0 http://www.jruyi.org/schema/jruyi/bootstrap_1_0.xsd">
+
+	<framework url="${jruyi.bundle.base.url}org.apache.felix.framework.jar">
+		<!-- OSGi Framework Properties -->
+		<property name="org.osgi.framework.system.packages.extra">
+			sun.misc,
+			sun.nio.ch
+		</property>
+	</framework>
+
+	<bundle startLevel="1" url="${jruyi.bundle.base.url}org.jruyi.osgi.log.jar"/>
+
+	<bundles startLevel="2">
+		<bundle url="${jruyi.bundle.base.url}org.apache.felix.metatype.jar"/>
+		<bundle url="${jruyi.bundle.base.url}org.apache.felix.configadmin.jar"/>
+	</bundles>
+
+	<bundle startLevel="3" url="${jruyi.bundle.base.url}org.apache.felix.scr.jar"/>
+
+	<bundle url="${jruyi.bundle.base.url}org.jruyi.common.jar"/>
+	<bundle url="${jruyi.bundle.base.url}org.jruyi.io.jar"/>
+
+	<bundles startLevel="10">
+		<bundle url="${jruyi.bundle.base.url}org.apache.felix.gogo.runtime.jar"/>
+		<bundle url="${jruyi.bundle.base.url}org.jruyi.cmd.jar"/>
+		<bundle url="${jruyi.bundle.base.url}org.jruyi.clid.jar"/>
+	</bundles>
+
+</bootstrap>

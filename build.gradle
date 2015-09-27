@@ -1,0 +1,108 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+plugins {
+	id 'com.gradle.plugin-publish' version '0.9.1'
+}
+
+apply plugin: 'groovy'
+apply plugin: 'maven-publish'
+
+group = 'org.jruyi.gradle'
+archivesBaseName = 'dist-gradle-plugin'
+version = '0.1.0-SNAPSHOT'
+description = 'A gradle plugin for creating distribution archives of JRuyi based applications'
+
+ext {
+	title = 'Gradle JRuyi Dist Plugin'
+	organizationId = 'org.jruyi'
+	organizationName = 'JRuyi.org'
+	organizationUrl = 'http://www.jruyi.org/'
+
+	licenseName = 'Apache License, Version 2.0'
+	licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+
+	createdBy = "${System.getProperty('java.version')} (${System.getProperty('java.vm.vendor')})"
+}
+
+configurations.all {
+	transitive = false
+}
+
+dependencies {
+	compile gradleApi()
+	compile localGroovy()
+}
+
+compileGroovy {
+	sourceCompatibility = 1.7
+	targetCompatibility = 1.7
+	options.encoding = 'UTF-8'
+}
+
+jar {
+	manifest {
+		attributes(
+				'Specification-Title': title,
+				'Specification-Version': version,
+				'Specification-Vendor': organizationName,
+				'Implementation-Title': title,
+				'Implementation-Version': version,
+				'Implementation-Vendor': organizationName,
+				'Implementation-Vendor-Id': organizationId,
+				'Implementation-Vendor-URL': organizationUrl,
+				'Created-By': createdBy,
+		)
+	}
+}
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+
+			artifactId archivesBaseName
+
+			from components.java
+
+			pom.withXml {
+				def projectNode = asNode()
+				projectNode.appendNode('name', title)
+				projectNode.appendNode('description', description)
+
+				def organizationNode = projectNode.appendNode('organization')
+				organizationNode.appendNode('name', organizationName)
+				organizationNode.appendNode('url', organizationUrl)
+
+				def licenseNode = projectNode.appendNode('licenses').appendNode('license')
+				licenseNode.appendNode('name', licenseName)
+				licenseNode.appendNode('url', licenseUrl)
+				licenseNode.appendNode('distribution', 'repo')
+			}
+		}
+	}
+}
+
+pluginBundle {
+	website = 'https://github.com/jruyi/dist-gradle-plugin'
+	vcsUrl = 'https://github.com/jruyi/dist-gradle-plugin.git'
+	description = project.description
+	tags = ['jruyi', 'dist', 'distribution']
+
+	plugins {
+		distPlugin {
+			id = 'org.jruyi.dist'
+			displayName = title
+		}
+	}
+}
