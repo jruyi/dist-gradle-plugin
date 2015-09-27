@@ -17,7 +17,7 @@ buildscript {
 	}
 }
 
-apply plugin: 'org.jruyi.dist'
+apply plugin: "org.jruyi.dist"
 ```
 
 Or for gradle 2.1+
