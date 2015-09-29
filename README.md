@@ -13,7 +13,7 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath "gradle.plugin.org.jruyi.gradle:dist-gradle-plugin:0.1.0"
+		classpath "gradle.plugin.org.jruyi.gradle:dist-gradle-plugin:0.2.0"
 	}
 }
 
@@ -24,7 +24,7 @@ Or for gradle 2.1+
 
 ```groovy
 plugins {
-	id "org.jruyi.dist" version "0.1.0"
+	id "org.jruyi.dist" version "0.2.0"
 }
 ```
 
@@ -44,9 +44,11 @@ To customize the distribution, please use the `jruyi` configuration as shown in 
 jruyi {
 	instHomeDir = 'inst/default'
 
-	bootstrapPath = 'src/main/jruyi/conf/bootstrap.xml'
-	log4j2ConfPath = 'src/main/jruyi/conf/log4j2.xml'
-	systemScriptPath = 'src/main/jruyi/conf/prov/00-system.ry'
+	bootstrapPath = null
+	log4j2ConfPath = null
+	systemScriptPath = null
+	
+	packDefaultBins = true
 }
 ```
 
@@ -101,6 +103,8 @@ ext {
 
 apply plugin: 'org.jruyi.dist'
 ```
+
+Thus, the default values of those extra version properties would be overrided.
 
 ### Packing Additional JARs
 

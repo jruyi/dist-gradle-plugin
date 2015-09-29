@@ -42,24 +42,27 @@ class PrepareDistTask extends DefaultTask {
 	}
 
 	private def generateBins() {
-		def binDir = "${project.buildDir}/jruyi/bin"
-		project.file("$binDir").mkdirs()
-		BINS.each { bin ->
-			byte[] content = PrepareDistTask.class.getResourceAsStream("/RUYI-INF/bin/$bin").getBytes()
-			project.file("$binDir/$bin").setBytes(content)
+		if (project.jruyi.packDefaultBins) {
+			def binDir = "${project.buildDir}/jruyi/bin"
+			project.file("$binDir").mkdirs()
+			BINS.each { bin ->
+				byte[] content = PrepareDistTask.class.getResourceAsStream("/RUYI-INF/bin/$bin").getBytes()
+				project.file("$binDir/$bin").setBytes(content)
+			}
 		}
 	}
 
 	private def configureSystemScript() {
 		String systemScriptPath = project.jruyi.systemScriptPath
-		if (systemScriptPath == null || (systemScriptPath = systemScriptPath.trim()).empty) {
+		if (systemScriptPath == null) {
 			def provDir = "${project.buildDir}/jruyi/conf/prov"
 			project.file("$provDir").mkdirs()
 
 			systemScriptPath = "$provDir/$SYSTEM_RY"
 			byte[] content = PrepareDistTask.class.getResourceAsStream("/RUYI-INF/conf/prov/$SYSTEM_RY").getBytes()
 			project.file("$systemScriptPath").setBytes(content)
-		}
+		} else if ((systemScriptPath = systemScriptPath.trim()).empty)
+			return
 
 		def intoProvDir = "$instHomeDir/conf/prov"
 		project.configure(project) {
@@ -77,14 +80,15 @@ class PrepareDistTask extends DefaultTask {
 
 	private def configureBootstrap() {
 		String bootstrapPath = project.jruyi.bootstrapPath
-		if (bootstrapPath == null || (bootstrapPath = bootstrapPath.trim()).empty) {
+		if (bootstrapPath == null) {
 			def confDir = "${project.buildDir}/jruyi/conf"
 			project.file("$confDir").mkdirs()
 
 			bootstrapPath = "$confDir/$BOOTSTRAP"
 			byte[] content = PrepareDistTask.class.getResourceAsStream("/RUYI-INF/conf/$BOOTSTRAP").getBytes()
 			project.file("$bootstrapPath").setBytes(content)
-		}
+		} else if ((bootstrapPath = bootstrapPath.trim()).empty)
+			return
 
 		def intoConfDir = "$instHomeDir/conf"
 		project.configure(project) {
@@ -102,14 +106,15 @@ class PrepareDistTask extends DefaultTask {
 
 	private def configureLog4j2Conf() {
 		String log4j2ConfPath = project.jruyi.log4j2ConfPath
-		if (log4j2ConfPath == null || (log4j2ConfPath = log4j2ConfPath.trim()).empty) {
+		if (log4j2ConfPath == null) {
 			def confDir = "${project.buildDir}/jruyi/conf"
 			project.file("$confDir").mkdirs()
 
 			log4j2ConfPath = "${confDir}/$LOG4J2_CONF"
 			byte[] content = PrepareDistTask.class.getResourceAsStream("/RUYI-INF/conf/$LOG4J2_CONF").getBytes()
 			project.file("$log4j2ConfPath").setBytes(content)
-		}
+		} else if ((log4j2ConfPath = log4j2ConfPath.trim()).empty)
+			return
 
 		def intoConfDir = "$instHomeDir/conf"
 		project.configure(project) {

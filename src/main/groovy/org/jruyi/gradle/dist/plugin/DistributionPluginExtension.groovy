@@ -20,4 +20,5 @@ class DistributionPluginExtension {
 	String bootstrapPath
 	String log4j2ConfPath
 	String systemScriptPath
+	boolean packDefaultBins = true
 }
