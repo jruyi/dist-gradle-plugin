@@ -81,9 +81,11 @@ class DistributionPlugin implements Plugin<Project> {
 
 	private configureProject(Project project) {
 
-		PROPS.each { k, v ->
-			if (!project.hasProperty(k) && !project.ext.has(k))
-				project.ext[k] = v
+		project.allprojects.each { p ->
+			PROPS.each { k, v ->
+				if (!p.hasProperty(k) && !p.ext.has(k))
+					p.ext[k] = v
+			}
 		}
 
 		project.configure(project) {
