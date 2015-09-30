@@ -108,33 +108,6 @@ class DistributionPlugin implements Plugin<Project> {
 				bundle
 			}
 
-			dependencies {
-				main "org.jruyi:jruyi-launcher:$jruyi_launcher_version"
-				main "org.jruyi:jruyi-cli:$jruyi_cli_version"
-
-				lib "commons-cli:commons-cli:$commons_cli_version"
-				lib "com.lmax:disruptor:$disruptor_version"
-				lib "jline:jline:$jline_version"
-				lib "org.slf4j:slf4j-api:$slf4j_version"
-				lib "org.apache.logging.log4j:log4j-api:$log4j_version"
-				lib "org.apache.logging.log4j:log4j-core:$log4j_version"
-				lib "org.apache.logging.log4j:log4j-slf4j-impl:$log4j_version"
-
-				lib "org.jruyi:jruyi-system:$jruyi_system_version"
-
-				bundle "org.apache.felix:org.apache.felix.configadmin:$org_apache_felix_configadmin_version"
-				bundle "org.apache.felix:org.apache.felix.framework:$org_apache_felix_framework_version"
-				bundle "org.apache.felix:org.apache.felix.gogo.runtime:$org_apache_felix_gogo_runtime_version"
-				bundle "org.apache.felix:org.apache.felix.metatype:$org_apache_felix_metatype_version"
-				bundle "org.apache.felix:org.apache.felix.scr:$org_apache_felix_scr_version"
-
-				bundle "org.jruyi:org.jruyi.clid:$org_jruyi_clid_version"
-				bundle "org.jruyi:org.jruyi.cmd:$org_jruyi_cmd_version"
-				bundle "org.jruyi:org.jruyi.common:$org_jruyi_common_version"
-				bundle "org.jruyi:org.jruyi.io:$org_jruyi_io_version"
-				bundle "org.jruyi:org.jruyi.osgi.log:$org_jruyi_osgi_log_version"
-			}
-
 			distTar {
 				compression = Compression.GZIP
 				extension = 'tar.gz'

@@ -13,7 +13,7 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath "gradle.plugin.org.jruyi.gradle:dist-gradle-plugin:0.3.0"
+		classpath "gradle.plugin.org.jruyi.gradle:dist-gradle-plugin:0.3.1"
 	}
 }
 
@@ -24,7 +24,7 @@ Or for gradle 2.1+
 
 ```groovy
 plugins {
-	id "org.jruyi.dist" version "0.3.0"
+	id "org.jruyi.dist" version "0.3.1"
 }
 ```
 
@@ -75,7 +75,7 @@ org_jruyi_io_version=2.3.2
 org_jruyi_osgi_log_version=2.0.2
 ```
 
-Or define them in `ext` before applying this plugin.
+Or define them as extra properties.
 
 ```gradle
 ext {
@@ -98,8 +98,6 @@ ext {
     org_jruyi_io_version = '2.3.2'
     org_jruyi_osgi_log_version = '2.0.2'
 }
-
-apply plugin: 'org.jruyi.dist'
 ```
 
 Thus, the default values of those extra version properties would be overrided.
