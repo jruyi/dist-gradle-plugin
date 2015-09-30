@@ -16,7 +16,6 @@ package org.jruyi.gradle.dist.plugin
 
 class DistributionPluginExtension {
 
-	String instHomeDir
 	String bootstrapPath
 	String log4j2ConfPath
 	String systemScriptPath

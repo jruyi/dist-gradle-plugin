@@ -13,7 +13,7 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath "gradle.plugin.org.jruyi.gradle:dist-gradle-plugin:0.2.0"
+		classpath "gradle.plugin.org.jruyi.gradle:dist-gradle-plugin:0.3.0"
 	}
 }
 
@@ -24,7 +24,7 @@ Or for gradle 2.1+
 
 ```groovy
 plugins {
-	id "org.jruyi.dist" version "0.2.0"
+	id "org.jruyi.dist" version "0.3.0"
 }
 ```
 
@@ -42,7 +42,6 @@ To customize the distribution, please use the `jruyi` configuration as shown in 
 
 ```gradle
 jruyi {
-	instHomeDir = 'inst/default'
 
 	bootstrapPath = null
 	log4j2ConfPath = null
@@ -113,6 +112,22 @@ To pack additional JARs, please add them to `dependencies.main`, `dependencies.l
 ### Packing Additional Files
 
 To pack additional files, please configure the main distribution of the [distribution plugin] (https://docs.gradle.org/current/userguide/distribution_plugin.html).
+
+### Change JRuyi Instance Home Dir for Output
+
+To change JRuyi instance home dir for output, please define `jruyiInstHomeDir` as gradle extra property.
+
+```groovy
+ext {
+    jruyiInstHomeDir = "inst/default"
+}
+```
+
+Or define it in gradle.properties.
+
+```INI
+jruyiInstHomeDir=inst/default
+```
 
 ## License
 

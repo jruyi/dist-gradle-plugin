@@ -15,6 +15,7 @@
 package org.jruyi.gradle.dist.plugin
 
 import org.gradle.api.DefaultTask
+import org.gradle.api.GradleException
 import org.gradle.api.tasks.TaskAction
 
 class PrepareDistTask extends DefaultTask {
@@ -29,25 +30,49 @@ class PrepareDistTask extends DefaultTask {
 	@TaskAction
 	def prepareDist() {
 		normalizeInstHomeDir()
-		generateBins()
+		configureBins()
 		configureBootstrap()
 		configureLog4j2Conf()
 		configureSystemScript()
+		configureJarsToPack()
 	}
 
 	private def normalizeInstHomeDir() {
-		instHomeDir = project.jruyi.instHomeDir
-		if (instHomeDir == null || (instHomeDir = instHomeDir.trim()).empty)
-			instHomeDir = 'inst/default'
+		String jruyiInstHomeDir
+		def v = project.ext['jruyiInstHomeDir']
+		if (v == null || (jruyiInstHomeDir = v.toString().trim()).empty) {
+			v = project['jruyiInstHomeDir']
+			if (v == null || (jruyiInstHomeDir = v.toString().trim()).empty)
+				throw new GradleException("jruyiInstHomeDir cannot be null or empty")
+		}
+		instHomeDir = jruyiInstHomeDir
 	}
 
-	private def generateBins() {
+	private def configureBins() {
 		if (project.jruyi.packDefaultBins) {
 			def binDir = "${project.buildDir}/jruyi/bin"
 			project.file("$binDir").mkdirs()
 			BINS.each { bin ->
 				byte[] content = PrepareDistTask.class.getResourceAsStream("/RUYI-INF/bin/$bin").getBytes()
 				project.file("$binDir/$bin").setBytes(content)
+			}
+
+			project.configure(project) {
+				distributions {
+					main {
+						contents {
+							from("$buildDir/jruyi/bin") {
+								include '**/*.bat'
+								into 'bin'
+							}
+							from("$buildDir/jruyi/bin") {
+								exclude '**/*.bat'
+								fileMode = 0755
+								into 'bin'
+							}
+						}
+					}
+				}
 			}
 		}
 	}
@@ -123,6 +148,41 @@ class PrepareDistTask extends DefaultTask {
 					contents {
 						from("$log4j2ConfPath") {
 							into "$intoConfDir"
+						}
+					}
+				}
+			}
+		}
+	}
+
+	private def configureJarsToPack() {
+		project.configure(project) {
+			distributions {
+				main {
+					contents {
+						def jars = [:]
+						configurations.main.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+							jars[artifact.file.name] = "${artifact.name}.${artifact.extension}"
+						}
+						from(configurations.main) {
+							into 'main'
+							rename { name -> jars.remove(name) }
+						}
+
+						configurations.lib.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+							jars[artifact.file.name] = "${artifact.name}.${artifact.extension}"
+						}
+						from(configurations.lib) {
+							into 'lib'
+							rename { name -> jars.remove(name) }
+						}
+
+						configurations.bundle.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+							jars[artifact.file.name] = "${artifact.name}.${artifact.extension}"
+						}
+						from(configurations.bundle) {
+							into 'bundles'
+							rename { name -> jars.remove(name) }
 						}
 					}
 				}
