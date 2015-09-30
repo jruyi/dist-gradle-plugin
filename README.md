@@ -42,7 +42,6 @@ To customize the distribution, please use the `jruyi` configuration as shown in 
 
 ```gradle
 jruyi {
-
 	bootstrapPath = null
 	log4j2ConfPath = null
 	systemScriptPath = null
