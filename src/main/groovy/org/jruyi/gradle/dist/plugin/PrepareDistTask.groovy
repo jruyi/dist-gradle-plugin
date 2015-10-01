@@ -157,7 +157,6 @@ class PrepareDistTask extends DefaultTask {
 
 	private def configureJarsToPack() {
 		project.configure(project) {
-
 			dependencies {
 				main "org.jruyi:jruyi-launcher:$jruyi_launcher_version"
 				main "org.jruyi:jruyi-cli:$jruyi_cli_version"
@@ -183,37 +182,6 @@ class PrepareDistTask extends DefaultTask {
 				bundle "org.jruyi:org.jruyi.common:$org_jruyi_common_version"
 				bundle "org.jruyi:org.jruyi.io:$org_jruyi_io_version"
 				bundle "org.jruyi:org.jruyi.osgi.log:$org_jruyi_osgi_log_version"
-			}
-
-			distributions {
-				main {
-					contents {
-						def jars = [:]
-						configurations.main.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-							jars[artifact.file.name] = "${artifact.name}.${artifact.extension}"
-						}
-						from(configurations.main) {
-							into 'main'
-							rename { name -> jars.remove(name) }
-						}
-
-						configurations.lib.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-							jars[artifact.file.name] = "${artifact.name}.${artifact.extension}"
-						}
-						from(configurations.lib) {
-							into 'lib'
-							rename { name -> jars.remove(name) }
-						}
-
-						configurations.bundle.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-							jars[artifact.file.name] = "${artifact.name}.${artifact.extension}"
-						}
-						from(configurations.bundle) {
-							into 'bundles'
-							rename { name -> jars.remove(name) }
-						}
-					}
-				}
 			}
 		}
 	}

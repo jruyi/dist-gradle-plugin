@@ -20,6 +20,8 @@ import org.gradle.api.Task
 import org.gradle.api.plugins.JavaPlugin
 import org.gradle.api.tasks.bundling.Compression
 
+import java.util.regex.Pattern
+
 class DistributionPlugin implements Plugin<Project> {
 
 	public static final String PREPARE_DIST_TASK_NAME = 'prepareDist'
@@ -98,14 +100,36 @@ class DistributionPlugin implements Plugin<Project> {
 				jcenter()
 			}
 
-			configurations.all {
-				transitive = false
-			}
-
 			configurations {
 				main
 				lib
 				bundle
+			}
+
+			configurations.main.transitive = false
+			configurations.lib.transitive = false
+			configurations.bundle.transitive = false
+
+			distributions {
+				main {
+					contents {
+						def pattern = Pattern.compile('(.*)-[0-9]+\\..*.jar')
+						from(configurations.main) {
+							into 'main'
+							rename pattern, '$1.jar'
+						}
+
+						from(configurations.lib) {
+							into 'lib'
+							rename pattern, '$1.jar'
+						}
+
+						from(configurations.bundle) {
+							into 'bundles'
+							rename pattern, '$1.jar'
+						}
+					}
+				}
 			}
 
 			distTar {

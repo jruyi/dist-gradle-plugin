@@ -21,7 +21,7 @@ apply plugin: 'maven-publish'
 
 group = 'org.jruyi.gradle'
 archivesBaseName = 'dist-gradle-plugin'
-version = '0.3.1'
+version = '0.3.2-SNAPSHOT'
 description = 'A gradle plugin for creating distribution archives of JRuyi based applications'
 
 ext {
@@ -52,8 +52,8 @@ processResources {
 }
 
 compileGroovy {
-	sourceCompatibility = 1.7
-	targetCompatibility = 1.7
+	sourceCompatibility = 1.6
+	targetCompatibility = 1.6
 	options.encoding = 'UTF-8'
 }
 

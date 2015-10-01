@@ -13,7 +13,7 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath "gradle.plugin.org.jruyi.gradle:dist-gradle-plugin:0.3.1"
+		classpath "gradle.plugin.org.jruyi.gradle:dist-gradle-plugin:0.3.2"
 	}
 }
 
@@ -24,7 +24,7 @@ Or for gradle 2.1+
 
 ```groovy
 plugins {
-	id "org.jruyi.dist" version "0.3.1"
+	id "org.jruyi.dist" version "0.3.2"
 }
 ```
 
