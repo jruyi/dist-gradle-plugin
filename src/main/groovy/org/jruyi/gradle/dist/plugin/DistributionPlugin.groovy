@@ -64,23 +64,6 @@ class DistributionPlugin implements Plugin<Project> {
 
 		Task distTar = project.tasks.getByName("distTar")
 		distTar.dependsOn prepareDist
-
-		if (project.plugins.hasPlugin('java'))
-			makeJarAsDependency(project, prepareDist)
-		else {
-			project.plugins.whenPluginAdded { plugin ->
-				if (plugin instanceof JavaPlugin)
-					makeJarAsDependency(project, prepareDist)
-			}
-		}
-	}
-
-	def makeJarAsDependency(Project project, Task prepareDist) {
-		Task jar = project.tasks.getByName(JavaPlugin.JAR_TASK_NAME);
-		if (jar == null)
-			return
-
-		prepareDist.dependsOn jar
 	}
 
 	private configureProject(Project project) {
