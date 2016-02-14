@@ -11,4 +11,7 @@ target
 *.iml
 .gradle
 .nb-gradle
+*~
+
 /build
+/bin
