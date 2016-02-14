@@ -13,7 +13,7 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath "gradle.plugin.org.jruyi.gradle:dist-gradle-plugin:0.3.5"
+		classpath "gradle.plugin.org.jruyi.gradle:dist-gradle-plugin:0.4.0"
 	}
 }
 
@@ -24,7 +24,7 @@ Or for gradle 2.1+
 
 ```groovy
 plugins {
-	id "org.jruyi.dist" version "0.3.5"
+	id "org.jruyi.dist" version "0.4.0"
 }
 ```
 
@@ -56,23 +56,24 @@ To pack the default JARs with specific versions, please define the version prope
 
 ```INI
 commons_cli_version=1.3.1
-disruptor_version=3.3.2
+disruptor_version=3.3.4
 jline_version=2.13
-log4j_version=2.4.1
+log4j_version=2.5
 org_apache_felix_configadmin_version=1.8.8
 org_apache_felix_framework_version=5.4.0
 org_apache_felix_gogo_runtime_version=0.16.2
 org_apache_felix_metatype_version=1.1.2
 org_apache_felix_scr_version=2.0.2
-slf4j_version=1.7.12
-jruyi_system_version=2.4.1
-jruyi_cli_version=2.0.1
-jruyi_launcher_version=2.0.1
-org_jruyi_clid_version=2.3.3
-org_jruyi_cmd_version=2.0.4
-org_jruyi_common_version=2.4.0
-org_jruyi_io_version=2.3.4
-org_jruyi_osgi_log_version=2.0.2
+slf4j_version=1.7.14
+jruyi_system_version=2.5.0
+jruyi_cli_version=2.0.2
+jruyi_launcher_version=2.0.2
+org_jruyi_clid_version=2.5.0
+org_jruyi_cmd_version=2.0.5
+org_jruyi_common_version=2.4.1
+org_jruyi_io_version=2.5.0
+org_jruyi_osgi_log_version=2.0.3
+org_jruyi_tpe_version=2.0.3
 ```
 
 Or define them as extra properties.
@@ -80,23 +81,24 @@ Or define them as extra properties.
 ```gradle
 ext {
 	commons_cli_version = '1.3.1'
-    disruptor_version = '3.3.2'
+    disruptor_version = '3.3.4'
     jline_version = '2.13'
-    log4j_version = '2.4.1'
+    log4j_version = '2.5'
     org_apache_felix_configadmin_version = '1.8.8'
     org_apache_felix_framework_version = '5.4.0'
     org_apache_felix_gogo_runtime_version = '0.16.2'
     org_apache_felix_metatype_version = '1.1.2'
     org_apache_felix_scr_version = '2.0.2'
-    slf4j_version = '1.7.12'
-    jruyi_system_version = '2.4.1'
-    jruyi_cli_version = '2.0.1'
-    jruyi_launcher_version = '2.0.1'
-    org_jruyi_clid_version = '2.3.3'
-    org_jruyi_cmd_version = '2.0.4'
-    org_jruyi_common_version = '2.4.0'
-    org_jruyi_io_version = '2.3.4'
-    org_jruyi_osgi_log_version = '2.0.2'
+    slf4j_version = '1.7.14'
+    jruyi_system_version = '2.5.0'
+    jruyi_cli_version = '2.0.2'
+    jruyi_launcher_version = '2.0.2'
+    org_jruyi_clid_version = '2.5.0'
+    org_jruyi_cmd_version = '2.0.5'
+    org_jruyi_common_version = '2.4.1'
+    org_jruyi_io_version = '2.5.0'
+    org_jruyi_osgi_log_version = '2.0.3'
+    org_jruyi_tpe_version = '2.0.3'
 }
 ```
 

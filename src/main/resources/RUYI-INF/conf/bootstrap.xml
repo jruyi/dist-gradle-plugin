@@ -36,6 +36,7 @@
 	<bundle startLevel="3" url="${jruyi.bundle.base.url}org.apache.felix.scr.jar"/>
 
 	<bundle url="${jruyi.bundle.base.url}org.jruyi.common.jar"/>
+	<bundle url="${jruyi.bundle.base.url}org.jruyi.tpe.jar"/>
 	<bundle url="${jruyi.bundle.base.url}org.jruyi.io.jar"/>
 
 	<bundles startLevel="10">

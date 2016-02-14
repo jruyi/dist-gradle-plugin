@@ -34,12 +34,6 @@ pushd %DIRNAME%
 set JRUYI_HOME=%cd%
 popd
 
-rem Set JRuyi home dir
-set JAVA_OPTS="-Djruyi.home.dir=%JRUYI_HOME%"
-
-rem JVM memory allocation pool parameters. Modify as appropriate.
-rem set JAVA_OPTS=-Xms128m -Xmx512m %JAVA_OPTS%
-
 rem Add -server to the JVM options, if supported.
 "%JAVA%" -server -version 2>&1 | findstr /I hotspot > nul
 if not errorlevel == 1 (set JAVA_OPTS=-server %JAVA_OPTS%)
@@ -58,6 +52,3 @@ set EXE_JAR=%JRUYI_HOME%\main\jruyi-launcher.jar
 "%JAVA%" %JAVA_OPTS% -jar "%EXE_JAR%" %*
 
 :END
-
-pause
-

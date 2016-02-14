@@ -182,6 +182,7 @@ class PrepareDistTask extends DefaultTask {
 				bundle "org.jruyi:org.jruyi.common:$org_jruyi_common_version"
 				bundle "org.jruyi:org.jruyi.io:$org_jruyi_io_version"
 				bundle "org.jruyi:org.jruyi.osgi.log:$org_jruyi_osgi_log_version"
+				bundle "org.jruyi:org.jruyi.tpe:$org_jruyi_tpe_version"
 			}
 		}
 	}
