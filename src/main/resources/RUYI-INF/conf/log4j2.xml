@@ -14,7 +14,7 @@
   ~ limitations under the License.
   -->
 
-<Configuration monitorInterval="60">
+<Configuration>
 
 	<Properties>
 		<Property name="log.dir">${sys:jruyi.home.dir}/inst/${sys:jruyi.inst.name}/log</Property>

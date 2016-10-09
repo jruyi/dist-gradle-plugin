@@ -13,7 +13,7 @@
  */
 
 plugins {
-	id 'com.gradle.plugin-publish' version '0.9.3'
+	id 'com.gradle.plugin-publish' version '0.9.6'
 }
 
 apply plugin: 'groovy'
@@ -21,7 +21,7 @@ apply plugin: 'maven-publish'
 
 group = 'org.jruyi.gradle'
 archivesBaseName = 'dist-gradle-plugin'
-version = '0.4.0'
+version = '2.5.1-SNAPSHOT'
 description = 'A gradle plugin for creating distribution archives of JRuyi based applications'
 
 ext {
@@ -119,9 +119,9 @@ publishing {
 }
 
 pluginBundle {
-	website = 'https://github.com/jruyi/dist-gradle-plugin'
-	vcsUrl = 'https://github.com/jruyi/dist-gradle-plugin.git'
-	description = project.description
+	website = "$websiteUrl"
+	vcsUrl = "$vcsUrl"
+	description = "${project.description}"
 	tags = ['jruyi', 'dist', 'distribution']
 
 	plugins {

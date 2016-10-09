@@ -162,7 +162,6 @@ class PrepareDistTask extends DefaultTask {
 				main "org.jruyi:jruyi-cli:$jruyi_cli_version"
 
 				lib "commons-cli:commons-cli:$commons_cli_version"
-				lib "com.lmax:disruptor:$disruptor_version"
 				lib "jline:jline:$jline_version"
 				lib "org.slf4j:slf4j-api:$slf4j_version"
 				lib "org.apache.logging.log4j:log4j-api:$log4j_version"
