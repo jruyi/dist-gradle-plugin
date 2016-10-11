@@ -38,14 +38,14 @@ class DistributionPlugin implements Plugin<Project> {
 			'org_apache_felix_scr_version'         : '2.0.6',
 			'slf4j_version'                        : '1.7.21',
 
-			'jruyi_system_version'                 : '2.5.1',
+			'jruyi_system_version'                 : '2.5.2',
 
 			'jruyi_cli_version'                    : '2.0.2',
 			'jruyi_launcher_version'               : '2.0.2',
 			'org_jruyi_clid_version'               : '2.5.1',
 			'org_jruyi_cmd_version'                : '2.0.5',
 			'org_jruyi_common_version'             : '2.4.2',
-			'org_jruyi_io_version'                 : '2.5.1',
+			'org_jruyi_io_version'                 : '2.5.2',
 			'org_jruyi_osgi_log_version'           : '2.0.3',
 			'org_jruyi_tpe_version'                : '2.0.3',
 	]
