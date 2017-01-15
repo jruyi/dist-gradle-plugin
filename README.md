@@ -13,7 +13,7 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath "gradle.plugin.org.jruyi.gradle:dist-gradle-plugin:2.5.3"
+		classpath "gradle.plugin.org.jruyi.gradle:dist-gradle-plugin:2.5.4"
 	}
 }
 
@@ -24,7 +24,7 @@ Or for gradle 2.1+:
 
 ```groovy
 plugins {
-	id "org.jruyi.dist" version "2.5.3"
+	id "org.jruyi.dist" version "2.5.4"
 }
 ```
 
@@ -60,19 +60,19 @@ jline_version=2.14.2
 log4j_version=2.7
 org_apache_felix_configadmin_version=1.8.12
 org_apache_felix_framework_version=5.6.1
-org_apache_felix_gogo_runtime_version=0.16.2
+org_apache_felix_gogo_runtime_version=1.0.2
 org_apache_felix_metatype_version=1.1.2
 org_apache_felix_scr_version=2.0.6
-slf4j_version=1.7.21
-jruyi_system_version=2.5.3
+slf4j_version=1.7.22
+jruyi_system_version=2.5.4
 jruyi_cli_version=2.0.2
 jruyi_launcher_version=2.0.2
-org_jruyi_clid_version=2.5.1
-org_jruyi_cmd_version=2.0.5
-org_jruyi_common_version=2.4.2
-org_jruyi_io_version=2.5.3
+org_jruyi_clid_version=2.5.2
+org_jruyi_cmd_version=2.0.6
+org_jruyi_common_version=2.4.3
+org_jruyi_io_version=2.5.4
 org_jruyi_osgi_log_version=2.0.3
-org_jruyi_tpe_version=2.0.3
+org_jruyi_tpe_version=2.0.4
 ```
 
 Or define them as extra properties.
@@ -84,19 +84,19 @@ ext {
     log4j_version = '2.7'
     org_apache_felix_configadmin_version = '1.8.12'
     org_apache_felix_framework_version = '5.6.1'
-    org_apache_felix_gogo_runtime_version = '0.16.2'
+    org_apache_felix_gogo_runtime_version = '1.0.2'
     org_apache_felix_metatype_version = '1.1.2'
     org_apache_felix_scr_version = '2.0.6'
-    slf4j_version = '1.7.21'
-    jruyi_system_version = '2.5.3'
+    slf4j_version = '1.7.22'
+    jruyi_system_version = '2.5.4'
     jruyi_cli_version = '2.0.2'
     jruyi_launcher_version = '2.0.2'
-    org_jruyi_clid_version = '2.5.1'
-    org_jruyi_cmd_version = '2.0.5'
-    org_jruyi_common_version = '2.4.2'
-    org_jruyi_io_version = '2.5.3'
+    org_jruyi_clid_version = '2.5.2'
+    org_jruyi_cmd_version = '2.0.6'
+    org_jruyi_common_version = '2.4.3'
+    org_jruyi_io_version = '2.5.4'
     org_jruyi_osgi_log_version = '2.0.3'
-    org_jruyi_tpe_version = '2.0.3'
+    org_jruyi_tpe_version = '2.0.4'
 }
 ```
 
