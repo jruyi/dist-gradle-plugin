@@ -12,6 +12,7 @@ target
 .gradle
 .nb-gradle
 *~
+.vscode
 
 /build
 /bin
